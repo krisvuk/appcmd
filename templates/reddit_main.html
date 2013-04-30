@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<title>AppCMD</title>
+</head>
+
+<body>
+<div id="topBar">
+<a href="/">
+<div id="mainLogo">
+  <img class="bottom" src="/img/logoMainOver.png" />
+  <img class="top" src="/img/logoMain.png" />
+</div><!--mainLogo-->
+</a>
+{% if username %}
+<div class="userInfotopBar">
+<div class="dashIcon"><a href="/dashboard/{{username}}"><img src="/img/dashIcon.png"/></a></div><a href="/profile/{{username}}">{{firstname}} {{lastname}}</a> | <a href="/logout">Logout</a>
+</div><!--userInfotopBar-->
+{% else %}
+<div class="mainLoginForm">
+<form method="post">
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="Enter"/>
+<a href="/register">Register</a>
+</form>
+<div class="mainLoginFormError">{{error}}</div><!--mainLoginFormError-->
+</div><!--mainLoginForm-->
+{% endif %}
+</div><!--topBar-->
+<div id="mainWrapper">
+<div style="background-image:url('/img/commandTopBanner.png'); height: 50px; width: 810px; position: absolute; top: 48px; margin-left: 255px;"><img style="position: absolute; margin-top:02px; margin-left:150px;" src="/img/redditTrackerTitle.png"/></div>
+<div id="mainBanner"></div><!--mainBanner-->
+<div id="sideBar">
+<div class="sideBarTopBanner"></div>
+
+</div><!--sideBar-->
+
+<div id="mainContent">
+<center><div id="rall"><font size="6">Reddit/r/all</font></div></center>
+
+<div class="redditUpdatesContainers">
+
+
+
+<div style="position: absolute; margin-top:-73px; margin-left:650px;"><form method="post"><input type="submit" value="I've read all of this."/></form></div>
+{% set count = 0 %}
+		{% for posts in reddit_posts | reverse %}
+		{% if count is even %}
+		<div id="redditUpdates1">
+		<a href="{{posts}}">
+		{% elif count is odd %}
+		<font size="4">{{posts | safe}}</font></a>
+		</div>
+		{% endif %}
+		{% set count = count + 1 %}
+		{% endfor %}
+
+	
+	</div>
+
+</div><!--mainContent-->
+</div><!--mainWrapper-->
+<div id="mainFooter">
+<center>
+<table width="600px">
+	<tr>
+		<td width="150px"><u>About Us</u></td> <td width="150px"><u>Contact Us</u></td> <td width="150px"><u>Advertising</u></td> <td width="150px"><u>Legal</u></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/">Home</a></td> <td width="150px"><a href="/contact">Contact</a></td> <td width="150px"><a href="/advertising">Advertising</a></td> <td width="150px"> <a href="/terms_of_use">Terms of Use</a></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/faq">FAQ</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/privacy_policy">Privacy Policy</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/register">Register</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+
+</table>
+<br>
+The contents of this webpage are copyright © 2013-2013 AppCMD.net. All Rights Reserved
+<br>
+AppCMD is proudly powered by <a href="https://developers.google.com/appengine/"><font style="color: grey;"><u>Google App Engine</u></font></a><img style="position: absolute; margin-top: -5px; margin-left: 5px;" src="/img/googleAppEngine.png"/>
+</center>
+</div><!--mainFooter-->
+</body>
+
+</html>

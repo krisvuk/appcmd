@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<title>AppCMD</title>
+</head>
+
+<body>
+<div id="topBar">
+<a href="/">
+<div id="mainLogo">
+  <img class="bottom" src="/img/logoMainOver.png" />
+  <img class="top" src="/img/logoMain.png" />
+</div><!--mainLogo-->
+</a>
+{% if username %}
+<div class="userInfotopBar">
+<div class="dashIcon"><a href="/dashboard/{{username}}"><img src="/img/dashIcon.png"/></a></div><a href="/profile/{{username}}">{{firstname}} {{lastname}}</a> | <a href="/logout">Logout</a>
+</div><!--userInfotopBar-->
+{% else %}
+<div class="mainLoginForm">
+<form method="post">
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="Enter"/>
+<a href="/register">Register</a>
+</form>
+<div class="mainLoginFormError">{{error}}</div><!--mainLoginFormError-->
+</div><!--mainLoginForm-->
+{% endif %}
+</div><!--topBar-->
+<div id="mainWrapper">
+<div style="background-image:url('/img/commandTopBanner.png'); height: 50px; width: 810px; position: absolute; top: 48px; margin-left: 255px;"><img style="position: absolute; margin-top:00px; margin-left:150px;" src="/img/streamTrackerTitle.png"/></div>
+<div id="mainBanner"></div><!--mainBanner-->
+<div id="sideBar">
+<div class="sideBarTopBanner"></div>
+
+</div><!--sideBar-->
+
+<div id="mainContent">
+<div style="position: absolute; background-image:url('/img/trackingTop.png'); width:800px; height:50px; margin-top: 40px;"></div>
+{% for stream_tmp in tracking_streams %}
+
+<div id="test">
+<a href="/stream_one/{{stream_tmp.stream_title}}" title="{{stream_tmp.stream_url}}"><div id="my_streams_button">
+<div style="position:absolute; color: white; padding-top: 4px; left:10px; text-shadow: 1px 1px black;">{{stream_tmp.stream_title}}</div><div style="position: absolute;  overflow: hidden; color: white; padding-top: 4px; left: 200px;">{{ stream_tmp.stream_url|truncate(40,"...") }}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 530px;">{% if stream_tmp.tracking_value == "True" %}<font style="color: #00cc00;">{{stream_tmp.tracking_value}}</font>{% else %}<font style="color: red;">{{stream_tmp.tracking_value}}</font>{% endif %}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 710px;">{{stream_tmp.stream_type(stream_tmp.stream_url)}}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 800px;"><form name="untracking_form" method="post"><button disabled="disabled">Track</button><div style="position: relative; color: blue;  top: -24px; left: 60px;"><button name="untrack" value="{{stream_tmp.key().id()}}">Untrack</button><input name="url" type="hidden" value="{{stream_tmp.stream_url}}"/></div></form></div><div class="stream_delete_button"><form method="post"><button name="delete_tracked" value="{{stream_tmp.key().id()}}">Delete</button></form></div><br>
+</div></a>
+</div>
+
+
+{%  endfor %}
+
+{% for stream_tmp in streams %}
+
+<div id="test">
+<a href="/stream_one/{{stream_tmp.stream_title}}" title="{{stream_tmp.stream_url}}"><div id="my_streams_button">
+<div style="position:absolute; color: white;  padding-top: 4px; left:10px; text-shadow: 1px 1px black;">{{stream_tmp.stream_title}}</div><div style="position: absolute; overflow: hidden;  color: white; padding-top: 4px; left: 200px;">{{ stream_tmp.stream_url|truncate(40,"...") }}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 530px;">{% if stream_tmp.tracking_value == "True" %}<font style="color: #00cc00;">{{stream_tmp.tracking_value}}</font>{% else %}<font style="color: red;">{{stream_tmp.tracking_value}}</font>{% endif %}</div><div style="position: absolute; color: white;  padding-top: 4px; left: 710px;">{{stream_tmp.stream_type(stream_tmp.stream_url)}}</div><div style="position: absolute; padding-top: 4px; left: 800px;"><form name="tracking_form" method="post"><button name="track" value="{{stream_tmp.key().id()}}">Track</button><div style="position: relative; top: -24px; left: 60px;"><button disabled="disabled">Untrack</button><input name="url2" type="hidden" value="{{stream_tmp.stream_url}}"/></div></form></div><div class="stream_delete_button"><form method="post"><button name="delete_untracked" value="{{stream_tmp.key().id()}}">Delete</button></form></div><br>
+</div></a>
+</div>
+
+
+	
+{%  endfor %}
+</div><!--mainContent-->
+
+</div><!--mainWrapper-->
+<div id="mainFooter">
+<center>
+<table width="600px">
+	<tr>
+		<td width="150px"><u>About Us</u></td> <td width="150px"><u>Contact Us</u></td> <td width="150px"><u>Advertising</u></td> <td width="150px"><u>Legal</u></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/">Home</a></td> <td width="150px"><a href="/contact">Contact</a></td> <td width="150px"><a href="/advertising">Advertising</a></td> <td width="150px"> <a href="/terms_of_use">Terms of Use</a></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/faq">FAQ</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/privacy_policy">Privacy Policy</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/register">Register</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+
+</table>
+</center>
+</div><!--mainFooter-->
+</body>
+
+</html>

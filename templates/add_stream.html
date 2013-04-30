@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<title>AppCMD</title>
+</head>
+
+<body>
+<div id="topBar">
+<a href="/">
+<div id="mainLogo">
+  <img class="bottom" src="/img/logoMainOver.png" />
+  <img class="top" src="/img/logoMain.png" />
+</div><!--mainLogo-->
+</a>
+{% if username %}
+<div class="userInfotopBar">
+<div class="dashIcon"><a href="/dashboard/{{username}}"><img src="/img/dashIcon.png"/></a></div><a href="/profile/{{username}}">{{firstname}} {{lastname}}</a> | <a href="/logout">Logout</a>
+</div><!--userInfotopBar-->
+{% else %}
+<div class="mainLoginForm">
+<form method="post">
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="Enter"/>
+<a href="/register">Register</a>
+</form>
+<div class="mainLoginFormError">{{error}}</div><!--mainLoginFormError-->
+</div><!--mainLoginForm-->
+{% endif %}
+</div><!--topBar-->
+<div id="mainWrapper">
+<div id="mainBanner"></div><!--mainBanner-->
+<div id="sideBar">
+<div class="sideBarTopBanner"></div>
+
+</div><!--sideBar-->
+
+<div id="mainContent">
+<div id="addStreamBox">
+<form method="post">
+	<div style="position: relative; top:71px; left: 185px;"><input size="50" type="text" name="stream_title"/></div>
+	<div style="position: relative; top:112px; left: 185px;"><input size="50" type="text" name="stream_url"/></div>
+	<div style="position: relative; top:255px; left: 195px;"><input type="submit" value="" class="addStreamButton2"  alt="Submit"/></div>
+	<div style="position: relative; top:133px; left: 20px;"><input type="radio" name="if_track" value="True">Track this stream.<br>
+															<input type="radio" name="if_track" value="False">Do not track this stream.</div>
+															 
+	{% if blank_error %}
+	<div style="position:relative; left: 559px; top: -82px"><img src="/img/stream_title_error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+	{% if already_added_error  %}
+	<div style="position:relative; left: 559px; top: -82px"><img src="/img/already-added-stream-error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+	{% if check_if_track_error  %}
+	<div style="position:relative; left: 559px; top: 82px"><img src="/img/stream-tracking-selection-error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+	{% if title_error  %}
+	<div style="position:relative; left: 559px; top: -82px"><img src="/img/stream-title-in-use-error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+	{% if title_length_error  %}
+	<div style="position:relative; left: 559px; top: -82px"><img src="/img/stream-title-length-error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+	{% if space_error  %}
+	<div style="position:relative; left: 559px; top: -82px"><img src="/img/stream-title-space-error.png"/></div>
+	{% else %}
+	{% endif %}
+	
+</form>
+</div><!--addStreamBox-->
+</div><!--mainContent-->
+
+</div><!--mainWrapper-->
+<div id="mainFooter">
+<center>
+<table width="600px">
+	<tr>
+		<td width="150px"><u>About Us</u></td> <td width="150px"><u>Contact Us</u></td> <td width="150px"><u>Advertising</u></td> <td width="150px"><u>Legal</u></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/">Home</a></td> <td width="150px"><a href="/contact">Contact</a></td> <td width="150px"><a href="/advertising">Advertising</a></td> <td width="150px"> <a href="/terms_of_use">Terms of Use</a></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/faq">FAQ</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/privacy_policy">Privacy Policy</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+	<tr>
+		<td width="150px"><a href="/register">Register</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+	</tr>
+
+</table>
+<br>
+The contents of this webpage are copyright © 2013-2013 AppCMD.net. All Rights Reserved
+<br>
+AppCMD is proudly powered by <a href="https://developers.google.com/appengine/"><font style="color: grey;"><u>Google App Engine</u></font></a><img style="position: absolute; margin-top: -5px; margin-left: 5px;" src="/img/googleAppEngine.png"/>
+</center>
+</div><!--mainFooter-->
+</body>
+
+</html>

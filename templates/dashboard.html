@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<title>AppCMD</title>
+</head>
+
+<body>
+<div id="topBar">
+<a href="/">
+<div id="mainLogo">
+  <img class="bottom" src="/img/logoMainOver.png" />
+  <img class="top" src="/img/logoMain.png" />
+</div><!--mainLogo-->
+</a>
+{% if username %}
+<div class="userInfotopBar">
+<div class="dashIcon"><a href="/dashboard/{{username}}"><img src="/img/dashIcon.png"/></a></div><a href="/profile/{{username}}">{{firstname}} {{lastname}}</a> | <a href="/logout">Logout</a>
+</div><!--userInfotopBar-->
+{% else %}
+<div class="mainLoginForm">
+<form method="post">
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="Enter"/>
+</form>
+<div class="mainLoginFormError">{{error}}</div><!--mainLoginFormError-->
+</div><!--mainLoginForm-->
+{% endif %}
+</div><!--topBar-->
+<div id="mainWrapper">
+
+<div id="mainBanner"></div><!--mainBanner-->
+<div id="sideBar">
+<div class="sideBarTopBanner"></div>
+
+</div><!--sideBar-->
+<div id="mainContent" style="background-color:grey;">
+<div style="background-image:url('/img/commandTopBanner.png'); height: 50px; width: 810px; position: absolute; top: 48px; margin-left: -5px;"><img style="position: absolute; margin-top:00px; margin-left:250px;" src="/img/commandTitle.png"/></div>
+<div id="icons" style="background-color:grey;">
+<a href="/streams_main/{{username}}">
+<div id="icon1">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon1-->
+</a>
+
+<a href="/reddit_main/{{username}}">
+<div id="icon2">
+  <img class="bottom" src="/img/iconTestOverReddit.png" />
+  <img class="top" src="/img/iconTestReddit.png" />
+</div><!--icon-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon3">
+  <img class="bottom" src="/img/youtubeButtonOver.png" />
+  <img class="top" src="/img/youtubeButton.png" />
+</div><!--icon1-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon4">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon1-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon5">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon1-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon6">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon1-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon7">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon-->
+</a>
+
+<a href="/streams_main/{{username}}">
+<div id="icon8">
+  <img class="bottom" src="/img/iconTestOver.png" />
+  <img class="top" src="/img/iconTest.png" />
+</div><!--icon1-->
+</a>
+</div><!--icons-->
+</div><!--mainContent-->
+
+</div><!--mainWrapper-->
+<div id="mainFooter">
+<center>
+<table width="600px">
+  <tr>
+    <td width="150px"><u>About Us</u></td> <td width="150px"><u>Contact Us</u></td> <td width="150px"><u>Advertising</u></td> <td width="150px"><u>Legal</u></td>
+  </tr>
+  <tr>
+    <td width="150px"><a href="/">Home</a></td> <td width="150px"><a href="/contact">Contact</a></td> <td width="150px"><a href="/advertising">Advertising</a></td> <td width="150px"> <a href="/terms_of_use">Terms of Use</a></td>
+  </tr>
+  <tr>
+    <td width="150px"><a href="/faq">FAQ</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+  </tr>
+  <tr>
+    <td width="150px"><a href="/privacy_policy">Privacy Policy</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+  </tr>
+  <tr>
+    <td width="150px"><a href="/register">Register</a></td> <td width="150px"></td> <td width="150px"></td> <td width="150px"></td>
+  </tr>
+
+</table>
+<br>
+The contents of this webpage are copyright © 2013-2013 AppCMD.net. All Rights Reserved
+<br>
+AppCMD is proudly powered by <a href="https://developers.google.com/appengine/"><font style="color: grey;"><u>Google App Engine</u></font></a><img style="position: absolute; margin-top: -5px; margin-left: 5px;" src="/img/googleAppEngine.png"/>
+</center>
+</div><!--mainFooter-->
+</body>
+
+</html>

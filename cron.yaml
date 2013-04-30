@@ -1,0 +1,7 @@
+cron:
+- description: twitch streams
+  url: /twitch
+  schedule: every 1 minutes
+- description: reddit update
+  url: /reddit
+  schedule: every 1 minutes
